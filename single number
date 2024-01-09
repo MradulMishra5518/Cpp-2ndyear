@@ -1,0 +1,35 @@
+leetcode problem:-single number
+
+Approaches:-
+1) using nested loop , TC -> O(N*N)
+2) using sorting , TC-> O(NlogN)
+3) using XOR , TC -> O(N)
+
+Code for Optimal Solution
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int ans=0;
+        for(int i=0 ; i< nums.size() ; i++){
+            ans=ans^nums[i];
+        }
+        return ans;
+    }
+};
+
+/////////////////////////////////////////////
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        for(int i=0 ; i< nums.size() ; i+=2){
+            if(i==nums.size()-1 || nums[i]!=nums[i+1])
+                return nums[i];
+        }
+        return 0;
+    }
+};
+
+///////////////////////////////////////////
+
